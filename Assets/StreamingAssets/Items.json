@@ -1,0 +1,1001 @@
+[
+  {
+    "id": 0,
+    "title": "Common Book",
+    "type": 0,
+    "stats": {
+      "xp": 2,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +2% XP",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_book"
+  },
+
+  {
+    "id": 1,
+    "title": "Common Bracer",
+    "type": 1,
+    "stats": {
+      "xp": 0,
+      "strength": 3,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +3 Strength",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_bracers"
+  },
+
+  {
+    "id": 2,
+    "title": "Common Gloves",
+    "type": 2,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 3,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +3 Dexterity",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_gloves"
+  },
+
+  {
+    "id": 3,
+    "title": "Common Scroll",
+    "type": 3,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 3,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +3 Inteligence",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_scroll"
+  },
+
+  {
+    "id": 4,
+    "title": "Common Ring",
+    "type": 4,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 50,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +50 HP",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_rings"
+  },
+
+  {
+    "id": 5,
+    "title": "Common Necklace",
+    "type": 5,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 50,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +50 Energy",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_necklace"
+  },
+
+  {
+    "id": 6,
+    "title": "Common Cloak",
+    "type": 6,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 10,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +10% HP Rate",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_cloaks"
+  },
+
+  {
+    "id": 7,
+    "title": "Common Gem",
+    "type": 7,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 10,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +10% Energy Rate",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_gem"
+  },
+
+  {
+    "id": 8,
+    "title": "Common Sword",
+    "type": 8,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 5,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +5 Damage",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_sword"
+  },
+
+  {
+    "id": 9,
+    "title": "Common Belt",
+    "type": 9,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 3,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +3% Critical Chance",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_belts"
+  },
+
+  {
+    "id": 10,
+    "title": "Common Armor",
+    "type": 10,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 3,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +3 Defense",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_armor"
+  },
+
+  {
+    "id": 11,
+    "title": "Common Boots",
+    "type": 11,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 1,
+      "energy_consume": 0
+    },
+    "description": "Gives +1 Movement",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_boots"
+  },
+
+  {
+    "id": 12,
+    "title": "Common Pants",
+    "type": 12,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 10
+    },
+    "description": "Reduce 10% Energy Consume",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_pants"
+  },
+
+  {
+    "id": 13,
+    "title": "Rare Book",
+    "type": 0,
+    "stats": {
+      "xp": 5,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +5% XP",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_book"
+  },
+
+  {
+    "id": 14,
+    "title": "Rare Bracer",
+    "type": 1,
+    "stats": {
+      "xp": 0,
+      "strength": 6,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +6 Strength",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_bracers"
+  },
+
+  {
+    "id": 15,
+    "title": "Rare Gloves",
+    "type": 2,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 6,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +6 Dexterity",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_gloves"
+  },
+
+  {
+    "id": 16,
+    "title": "Rare Scroll",
+    "type": 3,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 6,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +6 Inteligence",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_scroll"
+  },
+
+  {
+    "id": 17,
+    "title": "Rare Ring",
+    "type": 4,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 100,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +100 HP",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_rings"
+  },
+
+  {
+    "id": 18,
+    "title": "Rare Necklace",
+    "type": 5,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 100,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +100 Energy",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_necklace"
+  },
+
+  {
+    "id": 19,
+    "title": "Rare Cloak",
+    "type": 6,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 15,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +15% HP Rate",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_cloaks"
+  },
+
+  {
+    "id": 20,
+    "title": "Rare Gem",
+    "type": 7,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 15,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +15% Energy Rate",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_gem"
+  },
+
+  {
+    "id": 21,
+    "title": "Rare Sword",
+    "type": 8,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 10,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +10 Damage",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_sword"
+  },
+
+  {
+    "id": 22,
+    "title": "Rare Belt",
+    "type": 9,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 6,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +6% Critical Chance",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_belts"
+  },
+
+  {
+    "id": 23,
+    "title": "Rare Armor",
+    "type": 10,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 6,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +6 Defense",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_armor"
+  },
+
+  {
+    "id": 24,
+    "title": "Rare Boots",
+    "type": 11,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 2,
+      "energy_consume": 0
+    },
+    "description": "Gives +2 Movement",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_boots"
+  },
+
+  {
+    "id": 25,
+    "title": "Rare Pants",
+    "type": 12,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 15
+    },
+    "description": "Reduce 15% Energy Consume",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_pants"
+  },
+
+  {
+    "id": 26,
+    "title": "Epic Book",
+    "type": 0,
+    "stats": {
+      "xp": 7,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +7% XP",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_book"
+  },
+
+  {
+    "id": 27,
+    "title": "Epic Bracer",
+    "type": 1,
+    "stats": {
+      "xp": 0,
+      "strength": 9,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +9 Strength",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_bracers"
+  },
+
+  {
+    "id": 28,
+    "title": "Epic Gloves",
+    "type": 2,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 9,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +9 Dexterity",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_gloves"
+  },
+
+  {
+    "id": 29,
+    "title": "Epic Scroll",
+    "type": 3,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 9,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +9 Inteligence",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_scroll"
+  },
+
+  {
+    "id": 30,
+    "title": "Epic Ring",
+    "type": 4,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 150,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +150 HP",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_rings"
+  },
+
+  {
+    "id": 31,
+    "title": "Epic Necklace",
+    "type": 5,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 150,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +150 Energy",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_necklace"
+  },
+
+  {
+    "id": 32,
+    "title": "Epic Cloak",
+    "type": 6,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 20,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +20% HP Rate",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_cloaks"
+  },
+
+  {
+    "id": 33,
+    "title": "Epic Gem",
+    "type": 7,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 20,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +20% Energy Rate",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_gem"
+  },
+
+  {
+    "id": 34,
+    "title": "Epic Sword",
+    "type": 8,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 15,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +15 Damage",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_sword"
+  },
+
+  {
+    "id": 35,
+    "title": "Epic Belt",
+    "type": 9,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 9,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +9% Critical Chance",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_belts"
+  },
+
+  {
+    "id": 36,
+    "title": "Epic Armor",
+    "type": 10,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 9,
+      "movement": 0,
+      "energy_consume": 0
+    },
+    "description": "Gives +9 Defense",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_armor"
+  },
+
+  {
+    "id": 37,
+    "title": "Epic Boots",
+    "type": 11,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 3,
+      "energy_consume": 0
+    },
+    "description": "Gives +3 Movement",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_boots"
+  },
+
+  {
+    "id": 38,
+    "title": "Epic Pants",
+    "type": 12,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 0,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 20
+    },
+    "description": "Reduce 20% Energy Consume",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_pants"
+  },
+
+  {
+    "id": 39,
+    "title": "Minor HP Potion",
+    "type": 13,
+    "stats": {
+      "xp": 0,
+      "strength": 0,
+      "dexterity": 0,
+      "inteligence": 0,
+      "hp": 25,
+      "energy": 0,
+      "hp_rate": 0,
+      "energy_rate": 0,
+      "damage": 0,
+      "crit_chance": 0,
+      "defense": 0,
+      "movement": 0,
+      "energy_consume": 20
+    },
+    "description": "Restore 25 Hit Points",
+    "stackable": true,
+    "rarity": 1,
+    "slug": "minor_hp"
+  }
+]

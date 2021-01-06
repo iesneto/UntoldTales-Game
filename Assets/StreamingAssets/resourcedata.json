@@ -1,0 +1,963 @@
+[
+  {
+    "id": 0,
+    "title": "Damaged Book",
+    "type": 0,
+    "value": 5,
+    "description": "+5% XP",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "book",
+	"quality": 0
+  },
+
+  {
+    "id": 1,
+    "title": "Damaged Bracer",
+    "type": 1,
+    "value": 2,
+    "description": "+2 Strength",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "bracers",
+	"quality" : 0
+  },
+
+  {
+    "id": 2,
+    "title": "Damaged Glove",
+    "type": 2,
+    "value": 2,
+    "description": "+2 Dexterity",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "gloves",
+	"quality" : 0
+  },
+
+  {
+    "id": 3,
+    "title": "Damaged Scroll",
+    "type": 3,
+    "value": 2,
+    "description": "+2 Inteligence",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "scroll",
+	"quality" : 0
+  },
+
+  {
+    "id": 4,
+    "title": "Damaged Ring",
+    "type": 4,
+    "value": 20,
+    "description": "+20 Max Health",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "rings",
+	"quality" : 0
+  },
+
+  {
+    "id": 5,
+    "title": "Damaged Necklace",
+    "type": 5,
+    "value": 20,
+    "description": "+20 Max Stamina",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "necklace",
+	"quality" : 0
+  },
+
+  {
+    "id": 6,
+    "title": "Damaged Cloak",
+    "type": 6,
+    "value": 5,
+    "description": "+5% Health Rate",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "cloaks",
+	"quality" : 0
+  },
+
+  {
+    "id": 7,
+    "title": "Damaged Gem",
+    "type": 7,
+    "value": 5,
+    "description": "+5% Stamina Rate",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "gem",
+	"quality" : 0
+  },
+
+  {
+    "id": 8,
+    "title": "Damaged Sword",
+    "type": 8,
+    "value": 4,
+    "description": "+4 Damage",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "sword",
+	"quality" : 0
+  },
+
+  {
+    "id": 9,
+    "title": "Damaged Belt",
+    "type": 9,
+    "value": 3,
+    "description": "+3% Critical Chance",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "belts",
+	"quality" : 0
+  },
+
+  {
+    "id": 10,
+    "title": "Damaged Armor",
+    "type": 10,
+    "value": 4,
+    "description": "+4 Defense",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "armor",
+	"quality" : 0
+  },
+
+  {
+    "id": 11,
+    "title": "Damaged Boot",
+    "type": 11,
+    "value": 1,
+    "description": "+1 Agilidade",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "boots",
+	"quality" : 0
+  },
+
+  {
+    "id": 12,
+    "title": "Damaged Pants",
+    "type": 12,
+    "value": 5,
+    "description": "-5% Stamina Consume",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "pants",
+	"quality" : 0
+  },
+
+  {
+    "id": 13,
+    "title": "Damaged Coins",
+    "type": 13,
+    "value": 5,
+    "description": "+5% Gold Gain",
+    "stackable": false,
+    "rarity": "damaged",
+    "slug": "coins",
+	"quality" : 0
+  },
+
+  {
+    "id": 14,
+    "title": "Tiny Health Potion",
+    "type": 14,
+    "value": 25,
+    "description": "Restore 25 Health",
+    "stackable": true,
+    "rarity": "damaged",
+    "slug": "tinyHP",
+	"quality" : 0
+  },
+
+  {
+    "id": 15,
+    "title": "Tiny Stamina Potion",
+    "type": 15,
+    "value": 25,
+    "description": "Restore 25 Stamina",
+    "stackable": true,
+    "rarity": "damaged",
+    "slug": "tinyEP",
+	"quality" : 0
+  },
+
+  {
+    "id": 16,
+    "title": "Old Book",
+    "type": 0,
+    "value": 10,
+    "description": "+10% XP",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "book",
+	"quality" : 1
+  },
+
+  {
+    "id": 17,
+    "title": "Old Bracer",
+    "type": 1,
+    "value": 4,
+    "description": "+4 Strength",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "bracers",
+	"quality" : 1
+  },
+
+  {
+    "id": 18,
+    "title": "Old Glove",
+    "type": 2,
+    "value": 4,
+    "description": "+4 Dexterity",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "gloves",
+	"quality" : 1
+  },
+
+  {
+    "id": 19,
+    "title": "Old Scroll",
+    "type": 3,
+    "value": 4,
+    "description": "+4 Inteligence",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "scroll",
+	"quality" : 1
+  },
+
+  {
+    "id": 20,
+    "title": "Old Ring",
+    "type": 4,
+    "value": 40,
+    "description": "+40 Max Health",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "rings",
+	"quality" : 1
+  },
+
+  {
+    "id": 21,
+    "title": "Old Necklace",
+    "type": 5,
+    "value": 40,
+    "description": "+40 Max Stamina",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "necklace",
+	"quality" : 1
+  },
+
+  {
+    "id": 22,
+    "title": "Old Cloak",
+    "type": 6,
+    "value": 10,
+    "description": "+10% Health Rate",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "cloaks",
+	"quality" : 1
+  },
+
+  {
+    "id": 23,
+    "title": "Old Gem",
+    "type": 7,
+    "value": 10,
+    "description": "+10% Stamina Rate",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "gem",
+	"quality" : 1
+  },
+
+  {
+    "id": 24,
+    "title": "Old Sword",
+    "type": 8,
+    "value": 8,
+    "description": "+8 Damage",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "sword",
+	"quality" : 1
+  },
+
+  {
+    "id": 25,
+    "title": "Old Belt",
+    "type": 9,
+    "value": 5,
+    "description": "+5% Critical Chance",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "belts",
+	"quality" : 1
+  },
+
+  {
+    "id": 26,
+    "title": "Old Armor",
+    "type": 10,
+    "value": 8,
+    "description": "+8 Defense",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "armor",
+	"quality" : 1
+  },
+
+  {
+    "id": 27,
+    "title": "Old Boot",
+    "type": 11,
+    "value": 2,
+    "description": "+2 Agility",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "boots",
+	"quality" : 1
+  },
+
+  {
+    "id": 28,
+    "title": "Old Pants",
+    "type": 12,
+    "value": 10,
+    "description": "-10% Stamina Consume",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "pants",
+	"quality" : 1
+  },
+
+  {
+    "id": 29,
+    "title": "Old Coins",
+    "type": 13,
+    "value": 10,
+    "description": "+10% Gold Gain",
+    "stackable": false,
+    "rarity": "old",
+    "slug": "coins",
+	"quality" : 1
+  },
+
+  {
+    "id": 30,
+    "title": "Small Health Potion",
+    "type": 14,
+    "value": 50,
+    "description": "Restore 50 Health",
+    "stackable": true,
+    "rarity": "old",
+    "slug": "smallHP",
+	"quality": 1
+  },
+
+  {
+    "id": 31,
+    "title": "Small Stamina Potion",
+    "type": 15,
+    "value": 50,
+    "description": "Restore 50 Stamina",
+    "stackable": true,
+    "rarity": "old",
+    "slug": "smallEP",
+	"quality": 1
+  },
+
+  {
+    "id": 32,
+    "title": "Good Book",
+    "type": 0,
+    "value": 15,
+    "description": "+15% XP",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "book",
+	"quality": 2
+  },
+
+  {
+    "id": 33,
+    "title": "Good Bracer",
+    "type": 1,
+    "value": 6,
+    "description": "+6 Strength",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "bracers",
+	"quality": 2
+  },
+
+  {
+    "id": 34,
+    "title": "Good Glove",
+    "type": 2,
+    "value": 6,
+    "description": "+6 Dexterity",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "gloves",
+	"quality": 2
+  },
+
+  {
+    "id": 35,
+    "title": "Good Scroll",
+    "type": 3,
+    "value": 6,
+    "description": "+6 Inteligence",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "scroll",
+	"quality": 2
+  },
+
+  {
+    "id": 36,
+    "title": "Good Ring",
+    "type": 4,
+    "value": 60,
+    "description": "+60 Max Health",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "rings",
+	"quality": 2
+  },
+
+  {
+    "id": 37,
+    "title": "Good Necklace",
+    "type": 5,
+    "value": 60,
+    "description": "+60 Max Stamina",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "necklace",
+	"quality": 2
+  },
+
+  {
+    "id": 38,
+    "title": "Good Cloak",
+    "type": 6,
+    "value": 15,
+    "description": "+15% Health Rate",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "cloaks",
+	"quality": 2
+  },
+
+  {
+    "id": 39,
+    "title": "Good Gem",
+    "type": 7,
+    "value": 15,
+    "description": "+15% Stamina Rate",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "gem",
+	"quality": 2
+  },
+
+  {
+    "id": 40,
+    "title": "Good Sword",
+    "type": 8,
+    "value": 12,
+    "description": "+12 Damage",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "sword",
+	"quality": 2
+  },
+
+  {
+    "id": 41,
+    "title": "Good Belt",
+    "type": 9,
+    "value": 8,
+    "description": "+8% Critical Chance",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "belts",
+	"quality": 2
+  },
+
+  {
+    "id": 42,
+    "title": "Good Armor",
+    "type": 10,
+    "value": 12,
+    "description": "+12 Defense",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "armor",
+	"quality": 2
+  },
+
+  {
+    "id": 43,
+    "title": "Good Boot",
+    "type": 11,
+    "value": 3,
+    "description": "+3 Agility",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "boots",
+	"quality": 2
+  },
+
+  {
+    "id": 44,
+    "title": "Good Pants",
+    "type": 12,
+    "value": 15,
+    "description": "-15% Stamina Consume",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "pants",
+	"quality": 2
+  },
+
+  {
+    "id": 45,
+    "title": "Good Coins",
+    "type": 13,
+    "value": 15,
+    "description": "+15% Gold Gain",
+    "stackable": false,
+    "rarity": "good",
+    "slug": "coins",
+	"quality" : 2
+  },
+
+  {
+    "id": 46,
+    "title": "Medium Health Potion",
+    "type": 14,
+    "value": 75,
+    "description": "Restore 75 Health",
+    "stackable": true,
+    "rarity": "good",
+    "slug": "mediumHP",
+	"quality": 2
+  },
+
+  {
+    "id": 47,
+    "title": "Medium Stamina Potion",
+    "type": 15,
+    "value": 75,
+    "description": "Restore 75 Stamina",
+    "stackable": true,
+    "rarity": "good",
+    "slug": "mediumEP",
+	"quality": 2
+  },
+
+  {
+    "id": 48,
+    "title": "Great Book",
+    "type": 0,
+    "value": 20,
+    "description": "+20% XP",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "book",
+	"quality": 3
+  },
+
+  {
+    "id": 49,
+    "title": "Great Bracer",
+    "type": 1,
+    "value": 8,
+    "description": "+8 Strength",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "bracers",
+	"quality": 3
+  },
+
+  {
+    "id": 50,
+    "title": "Great Glove",
+    "type": 2,
+    "value": 8,
+    "description": "+8 Dexterity",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "gloves",
+	"quality": 3
+  },
+
+  {
+    "id": 51,
+    "title": "Great Scroll",
+    "type": 3,
+    "value": 8,
+    "description": "+8 Inteligence",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "scroll",
+	"quality": 3
+  },
+
+  {
+    "id": 52,
+    "title": "Great Ring",
+    "type": 4,
+    "value": 80,
+    "description": "+80 Max Health",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "rings",
+	"quality": 3
+  },
+
+  {
+    "id": 53,
+    "title": "Great Necklace",
+    "type": 5,
+    "value": 80,
+    "description": "+80 Max Stamina",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "necklace",
+	"quality": 3
+  },
+
+  {
+    "id": 54,
+    "title": "Great Cloak",
+    "type": 6,
+    "value": 20,
+    "description": "+20% Health Rate",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "cloaks",
+	"quality": 3
+  },
+
+  {
+    "id": 55,
+    "title": "Great Gem",
+    "type": 7,
+    "value": 20,
+    "description": "+20% Stamina Rate",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "gem",
+	"quality": 3
+  },
+
+  {
+    "id": 56,
+    "title": "Great Sword",
+    "type": 8,
+    "value": 16,
+    "description": "+16 Damage",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "sword",
+	"quality": 3
+  },
+
+  {
+    "id": 57,
+    "title": "Great Belt",
+    "type": 9,
+    "value": 10,
+    "description": "+10% Critical Chance",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "belts",
+	"quality": 3
+  },
+
+  {
+    "id": 58,
+    "title": "Great Armor",
+    "type": 10,
+    "value": 16,
+    "description": "+16 Defense",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "armor",
+	"quality": 3
+  },
+
+  {
+    "id": 59,
+    "title": "Great Boot",
+    "type": 11,
+    "value": 4,
+    "description": "+4 Agility",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "boots",
+	"quality": 3
+  },
+
+  {
+    "id": 60,
+    "title": "Great Pants",
+    "type": 12,
+    "value": 20,
+    "description": "-20% Stamina Consume",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "pants",
+	"quality": 3
+  },
+
+  {
+    "id": 61,
+    "title": "Great Coins",
+    "type": 13,
+    "value": 20,
+    "description": "+20% Gold Gain",
+    "stackable": false,
+    "rarity": "great",
+    "slug": "coins",
+	"quality" : 3
+  },
+
+  {
+    "id": 62,
+    "title": "Large Health Potion",
+    "type": 14,
+    "value": 100,
+    "description": "Restore 100 Health",
+    "stackable": true,
+    "rarity": "great",
+    "slug": "largeHP",
+	"quality": 3
+  },
+
+  {
+    "id": 63,
+    "title": "Large Stamina Potion",
+    "type": 15,
+    "value": 100,
+    "description": "Restore 100 Stamina",
+    "stackable": true,
+    "rarity": "great",
+    "slug": "largeEP",
+	"quality": 3
+  },
+
+  {
+    "id": 64,
+    "title": "Flawless Book",
+    "type": 0,
+    "value": 25,
+    "description": "+25% XP",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "book",
+	"quality": 4
+  },
+
+  {
+    "id": 65,
+    "title": "Flawless Bracer",
+    "type": 1,
+    "value": 10,
+    "description": "+10 Strength",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "bracers",
+	"quality": 4
+  },
+
+  {
+    "id": 66,
+    "title": "Flawless Glove",
+    "type": 2,
+    "value": 10,
+    "description": "+10 Dexterity",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "gloves",
+	"quality": 4
+  },
+
+  {
+    "id": 67,
+    "title": "Flawless Scroll",
+    "type": 3,
+    "value": 10,
+    "description": "+10 Inteligence",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "scroll",
+	"quality": 4
+  },
+
+  {
+    "id": 68,
+    "title": "Flawless Ring",
+    "type": 4,
+    "value": 100,
+    "description": "+100 Max Health",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "rings",
+	"quality": 4
+  },
+
+  {
+    "id": 69,
+    "title": "Flawless Necklace",
+    "type": 5,
+    "value": 100,
+    "description": "+100 Max Stamina",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "necklace",
+	"quality": 4
+  },
+
+  {
+    "id": 70,
+    "title": "Flawless Cloak",
+    "type": 6,
+    "value": 25,
+    "description": "+25% Health Rate",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "cloaks",
+	"quality": 4
+  },
+
+  {
+    "id": 71,
+    "title": "Flawless Gem",
+    "type": 7,
+    "value": 25,
+    "description": "+25% Stamina Rate",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "gem",
+	"quality": 4
+  },
+
+  {
+    "id": 72,
+    "title": "Flawless Sword",
+    "type": 8,
+    "value": 20,
+    "description": "+20 Damage",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "sword",
+	"quality": 4
+  },
+
+  {
+    "id": 73,
+    "title": "Flawless Belt",
+    "type": 9,
+    "value": 12,
+    "description": "+12% Critical Chance",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "belts",
+	"quality": 4
+  },
+
+  {
+    "id": 74,
+    "title": "Flawless Armor",
+    "type": 10,
+    "value": 20,
+    "description": "+20 Defense",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "armor",
+	"quality": 4
+  },
+
+  {
+    "id": 75,
+    "title": "Flawless Boot",
+    "type": 11,
+    "value": 5,
+    "description": "+5 Agility",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "boots",
+	"quality": 4
+  },
+
+  {
+    "id": 76,
+    "title": "Flawless Pants",
+    "type": 12,
+    "value": 25,
+    "description": "-25% Stamina Consume",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "pants",
+	"quality": 4
+  },
+
+  {
+    "id": 77,
+    "title": "Flawless Coins",
+    "type": 13,
+    "value": 25,
+    "description": "+25% Gold Gain",
+    "stackable": false,
+    "rarity": "flawless",
+    "slug": "coins",
+	"quality" : 4
+  },
+
+  {
+    "id": 78,
+    "title": "Huge Health Potion",
+    "type": 14,
+    "value": 125,
+    "description": "Restore 125 Health",
+    "stackable": true,
+    "rarity": "flawless",
+    "slug": "hugeHP",
+	"quality": 4
+  },
+
+  {
+    "id": 79,
+    "title": "Huge Stamina Potion",
+    "type": 15,
+    "value": 125,
+    "description": "Restore 125 Stamina",
+    "stackable": true,
+    "rarity": "flawless",
+    "slug": "hugeEP",
+	"quality": 4
+  }
+
+
+]

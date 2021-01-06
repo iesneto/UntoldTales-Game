@@ -1,0 +1,496 @@
+[
+  {
+    "id": 0,
+    "title": "Livro Comum",
+    "type": 0,
+    "value": 5,
+    "description": "+5% XP",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_book"
+  },
+
+  {
+    "id": 1,
+    "title": "Pulseira Comum",
+    "type": 1,
+    "value": 3,
+    "description": "+3 For\u00E7a",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_bracers"
+  },
+
+  {
+    "id": 2,
+    "title": "Luva Comum",
+    "type": 2,
+    "value": 3,
+    "description": "+3 Destreza",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_gloves"
+  },
+
+  {
+    "id": 3,
+    "title": "Pergaminho Comum",
+    "type": 3,
+    "value": 3,
+    "description": "+3 Intelig\u00EAncia",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_scroll"
+  },
+
+  {
+    "id": 4,
+    "title": "Anel Comum",
+    "type": 4,
+    "value": 25,
+    "description": "+25 Sa\u00FAde M\u00E1xima",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_rings"
+  },
+
+  {
+    "id": 5,
+    "title": "Colar Comum",
+    "type": 5,
+    "value": 25,
+    "description": "+25 Energia M\u00E1xima",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_necklace"
+  },
+
+  {
+    "id": 6,
+    "title": "Capa Comum",
+    "type": 6,
+    "value": 10,
+    "description": "+10% taxa de Sa\u00FAde",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_cloaks"
+  },
+
+  {
+    "id": 7,
+    "title": "Gema Comum",
+    "type": 7,
+    "value": 10,
+    "description": "+10% taxa de Energia",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_gem"
+  },
+
+  {
+    "id": 8,
+    "title": "Espada Comum",
+    "type": 8,
+    "value": 5,
+    "description": "+5 Dano",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_sword"
+  },
+
+  {
+    "id": 9,
+    "title": "Cinto Comum",
+    "type": 9,
+    "value": 5,
+    "description": "+5% Chance de Dano Cr\u00EDtico",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_belts"
+  },
+
+  {
+    "id": 10,
+    "title": "Armadura Comum",
+    "type": 10,
+    "value": 5,
+    "description": "+5 Defesa",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_armor"
+  },
+
+  {
+    "id": 11,
+    "title": "Bota Comum",
+    "type": 11,
+    "value": 1,
+    "description": "+1 Agilidade",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_boots"
+  },
+
+  {
+    "id": 12,
+    "title": "Cal\u00E7as Comuns",
+    "type": 12,
+    "value": 10,
+    "description": "-10% Consumo de Energia",
+    "stackable": false,
+    "rarity": 1,
+    "slug": "common_pants"
+  },
+
+  {
+    "id": 13,
+    "title": "Po\u00E7\u00E3o de Sa\u00FAde Pequena",
+    "type": 13,
+    "value": 25,
+    "description": "Restaura 25 Pontos de Sa\u00FAde.",
+    "stackable": true,
+    "rarity": 1,
+    "slug": "minor_hp"
+  },
+
+  {
+    "id": 14,
+    "title": "Po\u00E7\u00E3o de Energia Pequena",
+    "type": 14,
+    "value": 25,
+    "description": "Restaura 25 Pontos de Energia.",
+    "stackable": true,
+    "rarity": 1,
+    "slug": "minor_energy"
+  },
+
+  {
+    "id": 15,
+    "title": "Livro Raro",
+    "type": 0,
+    "value": 5,
+    "description": "+10% XP",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_book"
+  },
+
+  {
+    "id": 16,
+    "title": "Pulseira Rara",
+    "type": 1,
+    "value": 6,
+    "description": "+6 For\u00E7a",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_bracers"
+  },
+
+  {
+    "id": 17,
+    "title": "Luva Rara",
+    "type": 2,
+    "value": 6,
+    "description": "+6 Destreza",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_gloves"
+  },
+
+  {
+    "id": 18,
+    "title": "Pergaminho Raro",
+    "type": 3,
+    "value": 6,
+    "description": "+6 Intelig\u00EAncia",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_scroll"
+  },
+
+  {
+    "id": 19,
+    "title": "Anel Raro",
+    "type": 4,
+    "value": 50,
+    "description": "+50 Sa\u00FAde M\u00E1xima",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_rings"
+  },
+
+  {
+    "id": 20,
+    "title": "Colar Raro",
+    "type": 5,
+    "value": 50,
+    "description": "+50 Energia M\u00E1xima",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_necklace"
+  },
+
+  {
+    "id": 21,
+    "title": "Capa Rara",
+    "type": 6,
+    "value": 15,
+    "description": "+15% taxa de Sa\u00FAde",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_cloaks"
+  },
+
+  {
+    "id": 22,
+    "title": "Gema Rara",
+    "type": 7,
+    "value": 15,
+    "description": "+15% taxa de Energia",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_gem"
+  },
+
+  {
+    "id": 23,
+    "title": "Espada Rara",
+    "type": 8,
+    "value": 10,
+    "description": "+10 Dano",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_sword"
+  },
+
+  {
+    "id": 24,
+    "title": "Cinto Raro",
+    "type": 9,
+    "value": 10,
+    "description": "+10% Chance de Dano Cr/u00EDtico",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_belts"
+  },
+
+  {
+    "id": 25,
+    "title": "Armadura Rara",
+    "type": 10,
+    "value": 10,
+    "description": "+10 Defesa",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_armor"
+  },
+
+  {
+    "id": 26,
+    "title": "Bota Rara",
+    "type": 11,
+    "value": 2,
+    "description": "+2 Agilidade",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_boots"
+  },
+
+  {
+    "id": 27,
+    "title": "Cal/u00E7as Raras",
+    "type": 12,
+    "value": 15,
+    "description": "-15% Consumo de Energia",
+    "stackable": false,
+    "rarity": 2,
+    "slug": "rare_pants"
+  },
+
+  {
+    "id": 28,
+    "title": "Po\u00E7\u00E3o de Sa\u00FAde M/u00E9dia",
+    "type": 13,
+    "value": 50,
+    "description": "Restaura 50 Pontos de Sa\u00FAde.",
+    "stackable": true,
+    "rarity": 2,
+    "slug": "medium_hp"
+  },
+
+  {
+    "id": 29,
+    "title": "Po\u00E7\u00E3o de Energia M/u00E9dia",
+    "type": 14,
+    "value": 50,
+    "description": "Restaura 50 Pontos de Energia.",
+    "stackable": true,
+    "rarity": 2,
+    "slug": "medium_energy"
+  },
+
+  {
+    "id": 30,
+    "title": "Livro \u00C9pico",
+    "type": 0,
+    "value": 15,
+    "description": "+15% XP",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_book"
+  },
+
+  {
+    "id": 31,
+    "title": "Pulseira \u00C9pica",
+    "type": 1,
+    "value": 9,
+    "description": "+9 For\u00E7a",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_bracers"
+  },
+
+  {
+    "id": 32,
+    "title": "Luva \u00C9pica",
+    "type": 2,
+    "value": 9,
+    "description": "+9 Destreza",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_gloves"
+  },
+
+  {
+    "id": 33,
+    "title": "Pergaminho \u00C9pico",
+    "type": 3,
+    "value": 9,
+    "description": "+9 Intelig\u00EAncia",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_scroll"
+  },
+
+  {
+    "id": 34,
+    "title": "Anel \u00C9pico",
+    "type": 4,
+    "value": 100,
+    "description": "+100 Sa\u00FAde M\u00E1xima",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_rings"
+  },
+
+  {
+    "id": 35,
+    "title": "Colar \u00C9pico",
+    "type": 5,
+    "value": 100,
+    "description": "+100 Energia M\u00E1xima",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_necklace"
+  },
+
+  {
+    "id": 36,
+    "title": "Capa \u00C9pica",
+    "type": 6,
+    "value": 20,
+    "description": "+20% taxa de Sa\u00FAde",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_cloaks"
+  },
+
+  {
+    "id": 37,
+    "title": "Gema \u00C9pica",
+    "type": 7,
+    "value": 20,
+    "description": "+20% taxa de Energia",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_gem"
+  },
+
+  {
+    "id": 38,
+    "title": "Espada \u00C9pica",
+    "type": 8,
+    "value": 15,
+    "description": "+15 Dano",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_sword"
+  },
+
+  {
+    "id": 39,
+    "title": "Cinto \u00C9pico",
+    "type": 9,
+    "value": 15,
+    "description": "+15% Chance de Dano Cr\u00EDtico",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_belts"
+  },
+
+  {
+    "id": 40,
+    "title": "Armadura \u00C9pica",
+    "type": 10,
+    "value": 15,
+    "description": "+15 Defesa",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_armor"
+  },
+
+  {
+    "id": 41,
+    "title": "Bota \u00C9pica",
+    "type": 11,
+    "value": 3,
+    "description": "+3 Agilidade",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_boots"
+  },
+
+  {
+    "id": 42,
+    "title": "Cal\u00E7as \u00C9picas",
+    "type": 12,
+    "value": 20,
+    "description": "-20% Consumo de Energia",
+    "stackable": false,
+    "rarity": 3,
+    "slug": "epic_pants"
+  },
+
+  {
+    "id": 43,
+    "title": "Po\u00E7\u00E3o de Sa\u00FAde Grande",
+    "type": 13,
+    "value": 100,
+    "description": "Restaura 100 Pontos de Sa\u00FAde.",
+    "stackable": true,
+    "rarity": 3,
+    "slug": "large_hp"
+  },
+
+  {
+    "id": 44,
+    "title": "Po\u00E7\u00E3o de Energia Grande",
+    "type": 14,
+    "value": 100,
+    "description": "Restaura 100 Pontos de Energia.",
+    "stackable": true,
+    "rarity": 3,
+    "slug": "large_energy"
+  }
+]

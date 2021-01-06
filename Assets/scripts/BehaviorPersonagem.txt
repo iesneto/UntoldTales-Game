@@ -1,0 +1,1258 @@
+using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
+using UnityEngine.UI;
+using UnityEditor.Animations;
+
+public class HeroBehavior : MonoBehaviour {
+
+    private Animator anim;
+    private UnityEngine.AI.NavMeshAgent navigator;
+    //private bool move;
+    //private bool attack;
+    public Vector3 movePosition;
+   // private float moveVelocity;
+    //private float timetoMove;
+   // private float rotationSpeed;
+   // private Rigidbody rb;
+    public bool startWalk;
+    public enum states { idle, walk, attack, special, block, death};
+    public states currentState;
+    public states previousState;
+
+    public bool block;
+    public bool specialAttack;
+    public bool attack;
+    public bool walk;
+    public bool run;
+    public string specialAttackName;
+    public bool updateTouchEvents;
+    public bool doingBlock;
+
+    public GameObject target;
+    public bool doingSpecial;
+    private HeroStats heroAttributes;
+    private EnemyAttributes targetAttributes;
+    public Transform aoePosition;
+
+    //public float aoeRadius;
+    //private bool verifyPathDistance;
+    private float energyToConsume;
+    public float distanceFromPlayer;
+    //public ParticleSystem deepSlashParticle;
+   // public ParticleSystem mightyLeapParticle;
+    public ParticleSystem mightyLeapWaveParticle;
+    public ParticleSystem shieldBashParticle;
+    public ParticleSystem impaleParticle;
+    //public float runSpeed;
+
+    private float tempSpecialDamage;
+    private bool tempStun;
+    private bool tempThrowBack;
+    private bool tempRadius;
+
+    //[SerializeField]
+    public MeleeWeaponTrail trail;
+
+    public Image healthBar;
+    public Image energyBar;
+
+    public float playerToTargetDistance;
+
+    public int GetState ()
+    {
+        return (int)currentState;
+    }
+
+    void Start ()
+    {
+      //  rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        navigator = GetComponent<UnityEngine.AI.NavMeshAgent>();
+       // move = false;
+       // attack = false;
+       // moveVelocity = 3.0f;
+        //rotationSpeed = 6.0f;
+        currentState = states.idle;
+        doingSpecial = false;
+        heroAttributes = GetComponent<HeroStats>();
+        aoePosition = transform.FindChild("aoePosition");
+        //verifyPathDistance = false;
+        navigator.speed = heroAttributes.GetSpeed();
+        trail.Emit = false;
+
+        healthBar = GameObject.Find("HUDCanvas/Bars/HealthBG/Health").GetComponent<Image>();
+        energyBar = GameObject.Find("HUDCanvas/Bars/EnergyBG/Energy").GetComponent<Image>();
+        SetAnimationSpeed();
+
+        
+
+    }
+
+    //void FixedUpdate ()
+    //{
+
+    //    UpdateBars();
+
+    //    if (!doingSpecial)
+    //    {
+    //        switch (currentState)
+    //        {
+    //            case states.walk:
+    //                if (transform.position.x == movePosition.x && transform.position.z == movePosition.z)
+    //                {
+    //                    anim.SetBool("run", false);
+    //                    anim.SetBool("walk", false);
+    //                    currentState = states.idle;
+
+    //                }
+
+    //                //if (verifyPathDistance)
+    //                //{
+    //                distanceFromPlayer = navigator.remainingDistance;
+
+    //                if (distanceFromPlayer >= 40.0f /*|| distanceFromPlayer <= 0*/)
+    //                {
+    //                    navigator.SetDestination(transform.position);
+    //                    navigator.Stop();
+    //                    anim.SetBool("run", false);
+    //                    anim.SetBool("walk", false);
+    //                    anim.SetBool("attackNormal", false);
+                        
+
+    //                    currentState = states.idle;
+
+    //                }
+    //                //verifyPathDistance = false;
+    //                //}
+    //                break;
+    //            case states.attack:
+    //                if (targetAttributes.GetCurrentHealth() >= 0)
+    //                {
+    //                    movePosition = target.transform.position;
+    //                    if (!heroAttributes.blocked)
+    //                    {
+    //                        playerToTargetDistance = Vector3.Distance(transform.position, target.transform.position);
+    //                        if (Vector3.Distance(transform.position, target.transform.position) <= heroAttributes.GetAttackDistance())
+    //                        {
+    //                            //if (!doingSpecial)
+
+    //                            anim.SetBool("run", false);
+    //                            anim.SetBool("attackNormal", true);
+
+    //                            Vector3 lookAtPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+    //                            transform.LookAt(lookAtPosition);
+    //                            //anim.SetBool("attackNormal", false);
+    //                            navigator.Stop();
+
+
+    //                        }
+    //                        else
+    //                        {
+    //                            navigator.SetDestination(movePosition);
+    //                            anim.SetBool("attackNormal", false);
+
+    //                            navigator.Resume();
+
+    //                        }
+    //                    }
+    //                    else navigator.Stop();
+    //                }
+    //                else
+    //                {
+    //                    currentState = states.idle;
+    //                    anim.SetBool("attackNormal", false);
+    //                    anim.SetBool("walk", false);
+    //                    target = null;
+
+    //                }
+    //                break;
+    //            default: break;
+    //        }
+    //    }
+            
+        
+
+
+    //    //else if(startWalk)
+    //    //{
+    //    //    startWalk = false;
+    //    //}
+    //    //if (move)
+    //    //{
+    //    //    SmoothLook();
+    //    //    Move();
+    //    //}
+    //}
+
+    void Update ()
+    {
+        UpdateBars();
+
+        StateMachine();
+
+    }
+
+    void StateMachine()
+    {
+        switch(currentState)
+        {
+            case states.idle: StateIdle();
+                break;
+            case states.walk: StateWalk();
+                break;
+            case states.attack: StateAttack();
+                break;
+            case states.special: StateSpecial();
+                break;
+            case states.block: StateBlock();
+                break;
+            case states.death: StateDeath();
+                break;
+            default: break;
+
+        }
+    }
+
+    void StateIdle()
+    {
+        //anim.SetBool("idle", true);
+        if (updateTouchEvents)
+        {
+            if (block)
+            {
+                currentState = states.block;
+                previousState = states.idle;
+                //anim.SetBool("idle", false);
+                //anim.SetBool("startBlock", true);
+                //heroAttributes.SetBlocked(true);
+
+            }
+            else if (specialAttack)
+            {
+                currentState = states.special;
+                previousState = states.idle;
+                //anim.SetBool("idle", false);
+
+            }
+            else if (walk)
+            {
+                currentState = states.walk;
+                previousState = states.idle;
+                //anim.SetBool("idle", false);
+            }
+            else if (attack)
+            {
+                currentState = states.attack;
+                previousState = states.idle;
+                //anim.SetBool("idle",false);
+            }
+
+
+        }
+
+        
+    }
+
+    void StateWalk()
+    {
+        
+
+        if (updateTouchEvents)
+        {
+            if (walk)
+            {
+                navigator.SetDestination(movePosition);
+                navigator.Resume();
+                
+                anim.SetBool("walk", true);
+                if (run)
+                {
+                    anim.SetBool("run", true);
+                    navigator.speed = heroAttributes.GetRunSpeed();
+                }
+                else
+                {
+                    anim.SetBool("run", false);
+                    navigator.speed = heroAttributes.GetSpeed();
+                }
+                walk = false;
+                
+
+                //Ver se vai funcionar aqui, se não deve ser colocado fora deste bloco
+                // para ser verificado mais adiante
+                // Verifica se tomou um caminho desconhecido
+                //distanceFromPlayer = navigator.remainingDistance;
+
+                //if (distanceFromPlayer >= 40.0f /*|| distanceFromPlayer <= 0*/)
+                //{
+                //    navigator.SetDestination(transform.position);
+                //    navigator.Stop();
+                    
+                //    anim.SetBool("run", false);
+                //    anim.SetBool("walk", false);
+                //    currentState = states.idle;
+                //    previousState = states.walk;
+
+                //}
+
+                updateTouchEvents = false;
+            }
+
+            else if(specialAttack)
+            {
+                navigator.Stop();
+                
+                anim.SetBool("run", false);
+                anim.SetBool("walk", false);
+                currentState = states.special;
+                previousState = states.walk;
+
+            }
+
+            else if(block)
+            {
+                navigator.Stop();
+                
+                anim.SetBool("run", false);
+                anim.SetBool("walk", false);
+                currentState = states.block;
+                previousState = states.walk;
+            }
+            else if(attack)
+            {
+                navigator.Stop();
+
+                anim.SetBool("run", false);
+                anim.SetBool("walk", false);
+                currentState = states.attack;
+                previousState = states.walk;
+            }
+
+
+            
+
+            
+        }
+        else
+        {
+            // Verifica se tomou um caminho muito longo
+            distanceFromPlayer = navigator.remainingDistance;
+
+            if (distanceFromPlayer >= 40.0f /*|| distanceFromPlayer <= 0*/)
+            {
+                navigator.SetDestination(transform.position);
+                navigator.Stop();
+
+                anim.SetBool("run", false);
+                anim.SetBool("walk", false);
+                currentState = states.idle;
+                previousState = states.walk;
+
+            }
+
+            // Verifica se chegou no destino
+            if (transform.position.x == movePosition.x && transform.position.z == movePosition.z)
+            {
+                anim.SetBool("run", false);
+                anim.SetBool("walk", false);
+                currentState = states.idle;
+                previousState = states.walk;
+
+            }
+
+            // Verifica se tem alvo
+            if (target)
+            {
+                movePosition = target.transform.position;
+                navigator.SetDestination(movePosition);
+
+                playerToTargetDistance = Vector3.Distance(transform.position, target.transform.position);
+                if (Vector3.Distance(transform.position, target.transform.position) <= heroAttributes.GetAttackDistance())
+                {
+                    anim.SetBool("run", false);
+                    anim.SetBool("walk", false);
+                    //anim.SetBool("attackNormal", true);
+
+                    Vector3 lookAtPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                    transform.LookAt(lookAtPosition);
+                    //anim.SetBool("attackNormal", false);
+                    navigator.Stop();
+                    
+                    currentState = states.attack;
+                    previousState = states.walk;
+                    attack = true;
+                }
+            }
+        }
+
+        
+    }
+
+    void StateAttack()
+    {
+        if(updateTouchEvents)
+        {
+            if(attack)
+            {
+                
+                anim.SetBool("attackNormal", true);
+                attack = false;
+                updateTouchEvents = false;
+                Vector3 lookAtPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                transform.LookAt(lookAtPosition);               
+                
+            }
+            else if(walk)
+            {
+                anim.SetBool("attackNormal", false);
+                currentState = states.walk;
+                previousState = states.attack;
+            }
+            else if(specialAttack)
+            {
+                anim.SetBool("attackNormal", false);
+                currentState = states.special;
+                previousState = states.attack;
+            }
+            else if(block)
+            {
+                anim.SetBool("attackNormal", false);
+                currentState = states.block;
+                previousState = states.attack;
+            }
+        }
+        else
+        {
+            if(attack)
+            {
+                anim.SetBool("attackNormal", true);
+                attack = false;
+            }
+            if(targetAttributes.GetCurrentHealth() <= 0)
+            {
+                target = null;
+                anim.SetBool("attackNormal", false);
+                currentState = states.idle;
+                previousState = states.attack;
+            }
+        }
+    }
+
+    void StateSpecial()
+    {
+        if(specialAttack)
+        {
+            specialAttack = false;
+            doingSpecial = true;
+            anim.SetBool(specialAttackName, true);
+            ModifyAnimationSpeed();
+            heroAttributes.ConsumeEnergy(energyToConsume);
+            updateTouchEvents = false;
+        }
+        if(!doingSpecial)
+        {
+            anim.SetBool(specialAttackName, false);
+            SetAnimationSpeed();
+            switch(previousState)
+            {
+                case states.idle: currentState = states.idle;
+                    previousState = states.special;
+                    break;
+                case states.walk: currentState = states.walk;
+                    previousState = states.special;
+                    break;
+                case states.attack: currentState = states.attack;
+                    previousState = states.special;
+                    attack = true;
+                    break;
+                default: break;
+            }
+        }
+    }
+
+    void StateBlock()
+    {
+        if (updateTouchEvents)
+        {
+            updateTouchEvents = false;
+            if (block)
+            {
+                doingBlock = true;
+                anim.SetBool("startBlock", true);
+                heroAttributes.SetBlocked(true);
+            }
+            else
+            {
+                anim.SetBool("exitBlock", true);
+                anim.SetBool("enterBlock", false);
+            }
+        }
+        if(!doingBlock)
+        {
+            anim.SetBool("exitBlock", false);
+            heroAttributes.SetBlocked(false);
+            switch (previousState)
+            {
+                case states.idle:
+                    currentState = states.idle;
+                    previousState = states.block;
+                    break;
+                case states.walk:
+                    currentState = states.walk;
+                    previousState = states.block;
+                    break;
+                case states.attack:
+                    currentState = states.attack;
+                    previousState = states.block;
+                    attack = true;
+                    break;
+                default: break;
+            }
+        }
+    }
+
+    void StateDeath()
+    {
+
+    }
+
+    public void TouchEvents(bool _block, bool _walk, Vector3 _movePos, bool _run, Collider _target, bool _specialAttack, int _specialAttackType)
+    {
+        block = _block;
+
+        if(_specialAttack)
+        {
+            canSwipe(_specialAttackType);
+        }
+        else if (_walk)
+        {
+            walk = _walk;
+            run = _run;
+            if (_target)
+            {
+                // Ataque normal o player deve ser deslocado até o target
+                // coloca o player no estado de ataque
+                if (_target.gameObject.GetComponent<EnemyAttributes>().GetCurrentHealth() >= 0)
+                {
+                    if (target != _target.gameObject)
+                    {
+                        if (target) targetAttributes.CombatIcon();
+                        target = _target.gameObject;
+                        targetAttributes = target.GetComponent<EnemyAttributes>();
+                        targetAttributes.CombatIcon();
+
+                    }
+
+
+
+                    // seta o destino como o do target                                               
+                    movePosition = _target.transform.position;
+
+                    //verifica se o target está fora do alcance
+                    
+                    if (Vector3.Distance(movePosition, transform.position) >= heroAttributes.GetAttackDistance())
+                    {
+                        attack = false;
+                        if(Vector3.Distance(movePosition, transform.position) <= 1.5f*heroAttributes.GetAttackDistance())
+                            transform.LookAt(_target.transform);
+                        //define a distancia de stop de parada dentro do alcance de ataque
+                        navigator.stoppingDistance = heroAttributes.GetAttackDistance();
+                    }
+                    //se dentro do alcance, apenas olha em direção ao target
+                    else
+                    {
+                        attack = true;
+                        walk = false;
+                        //transform.LookAt(_target.transform);
+                    }
+                }
+
+            }
+            else
+            {
+                
+                UnityEngine.AI.NavMeshHit hit;
+                UnityEngine.AI.NavMesh.SamplePosition(_movePos, out hit, 200.0f, 1);
+                attack = false;
+                movePosition = hit.position;
+                navigator.stoppingDistance = 0;
+                if (target)
+                {
+                    targetAttributes.CombatIcon();
+                    target = null;
+                }
+            }
+        }
+
+        updateTouchEvents = true;
+
+    }
+
+    //void Move()
+
+    //{
+    //    float step = Time.fixedDeltaTime * moveVelocity;
+    //    float distance = Vector3.Distance(transform.position, movePosition);
+    //    if (distance > 1.1f)
+    //    {
+    //        Vector3 directionToMove = (rb.transform.position - movePosition).normalized;
+    //        rb.MovePosition(transform.position - directionToMove * step);
+    //    }
+    //    else move = false;
+    //}
+
+    //void SmoothLook()
+    //{
+
+    //    Quaternion newRotation = Quaternion.LookRotation(movePosition - transform.position);
+    //    newRotation.x = 0.0f;
+    //    newRotation.z = 0.0f;
+    //    transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, rotationSpeed * Time.fixedDeltaTime);
+    //}
+
+    // atualiza o destino do movimento 
+    public void UpdateMovePosition(Vector3 _movePosition, bool run)
+    {
+        //if (!doingSpecial && !heroAttributes.blocked)
+        //{
+        //    UnityEngine.AI.NavMeshHit hit;
+        //    UnityEngine.AI.NavMesh.SamplePosition(_movePosition, out hit, 200.0f, 1);
+
+        //    movePosition = hit.position;
+
+        //    //movePosition = _movePosition;
+        //    //UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
+        //    // move = true;
+        //    // if (navigator.enabled)
+        //    //if (navigator.CalculatePath(movePosition, path))
+        //    //{
+
+        //    //if (navigator.SetDestination(movePosition))
+        //    //{
+        //    //    verifyPathDistance = true;
+        //    //    navigator.Resume();
+        //    //}
+        //    navigator.SetDestination(movePosition);
+
+
+
+
+        //    navigator.stoppingDistance = 0;
+        //    if (run)
+        //    {
+        //        anim.SetBool("run", true);
+        //        navigator.speed = heroAttributes.GetRunSpeed();
+
+
+        //    }
+        //    else
+        //    {
+        //        anim.SetBool("walk", true);
+        //        anim.SetBool("attackNormal", false);
+        //        anim.SetBool("run", false);
+        //        navigator.speed = heroAttributes.GetSpeed();
+
+        //    }
+
+        //    currentState = states.walk;
+        //    navigator.Resume();
+
+        //    if (target)
+        //        {
+        //            targetAttributes.CombatIcon();
+        //            target = null;
+        //        }
+
+        //    // }
+        //}
+    }
+      
+
+
+    // SHIELD BASH
+    public void SwipeLeft()
+    {
+        // faz detalhes especificos deste swipe
+        // quantidade de energia consumida
+        // dano e efeitos
+        shieldBashParticle.Play();
+
+        tempSpecialDamage = heroAttributes.SwipeLeftDamage;
+        tempStun = false;
+        tempThrowBack = true;
+        tempRadius = true;
+
+        // FAzer depois com Coroutines
+        Invoke("waitTime", 0.2f);
+
+        //Collider[] targets = Physics.OverlapSphere(aoePosition.position, heroAttributes.AoERadius, LayerMask.GetMask("enemy"));
+
+        //foreach ( Collider col in targets)
+        //{
+        //    EnemyAttributes scr = col.gameObject.GetComponent<EnemyAttributes>();
+        //    if (scr.GetCurrentHealth() >= 0)
+        //    {
+        //        scr.ShowHealth();
+        //        scr.ThrowBack(heroAttributes.GetDistanceThrowBack(), heroAttributes.DefenseReduction);
+        //        scr.Damage(heroAttributes.SwipeLeftDamage);
+
+        //    }
+        //}
+    }
+
+
+
+
+
+    // DEEP SLASH
+    public void SwipeRight()
+    {
+
+        //deepSlashParticle.Play();
+        trail.Emit = true;
+
+        tempSpecialDamage = heroAttributes.SwipeRightDamage;
+        tempStun = false;
+        tempThrowBack = false;
+        tempRadius = true;
+
+        Invoke("waitTime", 0.15f);
+
+
+        //Collider[] targets = Physics.OverlapSphere(aoePosition.position, heroAttributes.AoERadius, LayerMask.GetMask("enemy"));
+
+        //foreach (Collider col in targets)
+        //{
+        //    EnemyAttributes scr = col.gameObject.GetComponent<EnemyAttributes>();
+        //    if (scr.GetCurrentHealth() >= 0)
+        //    {
+        //        scr.ShowHealth();
+        //        scr.Damage(heroAttributes.SwipeRightDamage);
+        //    }
+        //}
+    }
+
+
+
+
+    // IMPALE
+    public void SwipeUp()
+    {
+        impaleParticle.Play();
+
+        tempSpecialDamage = heroAttributes.SwipeUpDamage;
+        tempStun = false;
+        tempThrowBack = false;
+        tempRadius = false;
+
+        Invoke("waitTime", 0.15f);
+
+
+        ////Collider[] targets = Physics.OverlapSphere(aoePosition.position, heroAttributes.AoERadius*0.5f, LayerMask.GetMask("enemy"));        //RaycastHit hit;
+        //Collider[] targets = Physics.OverlapBox(aoePosition.position, new Vector3(0.1f, 0.1f, 1.0f), Quaternion.LookRotation(transform.forward), LayerMask.GetMask("enemy"));
+        ////if (Physics.Raycast(aoePosition.position, transform.forward, out hit, heroAttributes.AoERadius, LayerMask.GetMask("enemy")))
+        //foreach (Collider col in targets)
+        //{
+        //    //Collider col = hit.collider;
+        //    EnemyAttributes scr = col.gameObject.GetComponent<EnemyAttributes>();
+        //    if (scr.GetCurrentHealth() >= 0)
+        //    {
+        //        scr.ShowHealth();
+        //        scr.Damage(heroAttributes.SwipeUpDamage);
+        //    }
+        //    break;
+        //}
+
+
+    }
+
+
+    // MIGHTY LEAP
+    public void SwipeDown()
+    {
+        //mightyLeapParticle.Play();
+        trail.Emit = true;
+        mightyLeapWaveParticle.Play();
+
+        tempSpecialDamage = heroAttributes.SwipeDownDamage;
+        tempStun = true;
+        tempThrowBack = false;
+        tempRadius = true;
+
+        Invoke("waitTime", 0.4f);
+
+
+        //Collider[] targets = Physics.OverlapSphere(aoePosition.position, heroAttributes.AoERadius, LayerMask.GetMask("enemy"));
+
+        //foreach (Collider col in targets)
+        //{
+        //    EnemyAttributes scr = col.gameObject.GetComponent<EnemyAttributes>();
+        //    if (scr.GetCurrentHealth() >= 0)
+        //    {
+        //        scr.ShowHealth();
+        //        scr.Damage(heroAttributes.SwipeDownDamage);
+        //        scr.Stun(heroAttributes.StunTime);
+        //    }
+        //}
+    }
+
+
+    // Metodo de delay para aplicar os efeitos do ataque especial
+    void waitTime()
+    {
+        trail.Emit = false;
+
+        DoSpecialDamage();
+    }
+    
+
+    // Aplica os efeitos do ataque especial
+    // com um delay para se adequar à animação
+    void DoSpecialDamage()
+    {
+
+        if (tempRadius)
+        {
+            Collider[] targets = Physics.OverlapSphere(aoePosition.position, heroAttributes.AoERadius, LayerMask.GetMask("enemy"));
+
+            foreach (Collider col in targets)
+            {
+                EnemyAttributes scr = col.gameObject.GetComponent<EnemyAttributes>();
+                if (scr.GetCurrentHealth() >= 0)
+                {
+                    scr.ShowHealth();
+                    scr.Damage(tempSpecialDamage);
+
+                }
+
+                if (tempThrowBack)
+                {
+                    scr.ThrowBack(heroAttributes.GetDistanceThrowBack(), heroAttributes.DefenseReduction);
+                }
+
+                if (tempStun)
+                {
+                    scr.Stun(heroAttributes.StunTime);
+                }
+            }
+
+
+        }
+        else
+        {
+            Collider[] targets = Physics.OverlapBox(aoePosition.position, new Vector3(0.1f, 0.1f, 1.0f), Quaternion.LookRotation(transform.forward), LayerMask.GetMask("enemy"));
+            if (targets.Length != 0)
+            {
+                Collider nearest = targets[0];
+                if (targets.Length > 1)
+                {
+
+                    foreach (Collider col in targets)
+                    {
+                        float nearestDist = Vector3.Distance(transform.position, nearest.transform.position);
+                        float thisDist = Vector3.Distance(transform.position, col.transform.position);
+                        if (nearestDist >= thisDist)
+                            nearest = col;
+                    }
+
+
+                }
+
+                EnemyAttributes scr = nearest.gameObject.GetComponent<EnemyAttributes>();
+                if (scr.GetCurrentHealth() >= 0)
+                {
+                    scr.ShowHealth();
+                    scr.Damage(tempSpecialDamage);
+                }
+            }
+
+        }
+
+
+    }
+    
+
+    // Metodo chamado pelo Interpretador do mouse
+    // verifica se pode aplicar o swipe, de acordo com a quantidade de energia do player
+    // ou se ja está aplicando um golpe
+    public void canSwipe(int s)
+    {
+        specialAttack = false;
+        if (!doingSpecial)
+        {
+            switch (s)
+            {
+                case 1:
+                    if (heroAttributes.CurrentEnergy >= heroAttributes.SwipeLeftEnergy)
+                    {
+                        //heroAttributes.ConsumeEnergy(heroAttributes.SwipeLeftEnergy);
+                        energyToConsume = heroAttributes.SwipeLeftEnergy;
+                    // DoSwipeAttack("swipeLeft");
+                        specialAttack = true;
+                        specialAttackName = "swipeLeft";
+                    }
+
+                    break;
+                case 2:
+                    if (heroAttributes.CurrentEnergy >= heroAttributes.SwipeRightEnergy)
+                    {
+                        //heroAttributes.ConsumeEnergy(heroAttributes.SwipeRightEnergy);
+                        energyToConsume = heroAttributes.SwipeRightEnergy;
+                        //DoSwipeAttack("swipeRight");
+                        specialAttack = true;
+                        specialAttackName = "swipeRight";
+
+                }
+
+                    break;
+                case 3:
+                    if (heroAttributes.CurrentEnergy >= heroAttributes.SwipeUpEnergy)
+                    {
+                        //heroAttributes.ConsumeEnergy(heroAttributes.SwipeUpEnergy);
+                        energyToConsume = heroAttributes.SwipeUpEnergy;
+                        //DoSwipeAttack("swipeUp");
+                        specialAttack = true;
+                        specialAttackName = "swipeUp";
+                    }
+
+                    break;
+                case 4:
+                    if (heroAttributes.CurrentEnergy >= heroAttributes.SwipeDownEnergy)
+                    {
+                        // heroAttributes.ConsumeEnergy(heroAttributes.SwipeDownEnergy);
+                        energyToConsume = heroAttributes.SwipeDownEnergy;
+                        // DoSwipeAttack("swipeDown");
+                        specialAttack = true;
+                        specialAttackName = "swipeDown";
+
+                    }
+
+                    break;
+                default: break;
+            }
+       }
+    }
+
+    // Ataque especial pode ser aplicado
+    // Este método dispara o ataque específico
+    public void DoSwipeAttack(string swipeType)
+    {
+
+        ////switch (currentState)
+        ////{
+        ////    case states.walk:
+        ////        anim.SetBool("walk", false);
+        ////        anim.SetBool("run", false);
+        ////        navigator.Stop();
+        ////        break;
+        ////    case states.attack:
+        ////        anim.SetBool("attackNormal", false);
+        ////        anim.SetBool("walk", false);
+        ////        anim.SetBool("run", false);
+
+        ////        navigator.Stop();
+        ////        break;
+        ////    default: break;
+        ////}
+        //doingSpecial = true;
+        //navigator.Stop();
+        //Debug.Log("doingSpecial True: DoSwipeAttack");
+        //anim.SetBool("attackNormal", false);
+        //anim.SetBool("walk", false);
+        //anim.SetBool("run", false);
+        //ModifyAnimationSpeed();
+        //anim.SetBool(swipeType, true);
+        //Debug.Log("Fazendo Special");
+
+        //heroAttributes.ConsumeEnergy(energyToConsume);
+        
+        
+        
+
+    }
+
+    //método para garantir que o especial seja completado
+    // talvez desnecessário, pois o DoSwipeAttack faz exatamente isso
+    public void SpecialOn()
+    {
+        //doingSpecial = true;
+        //Debug.Log("doingSpecial True: SpecialOn");
+    }
+
+
+    // Ataque Normal
+    public void DoNormalAttack(Collider _target, bool run)
+    {
+        
+        //// Ataque normal o player deve ser deslocado até o target
+        //// coloca o player no estado de ataque
+        //if (_target.gameObject.GetComponent<EnemyAttributes>().GetCurrentHealth() >= 0)
+        //{
+        //    if (target != _target.gameObject)
+        //    {
+        //        if (target) targetAttributes.CombatIcon();
+        //        target = _target.gameObject;
+        //        targetAttributes = target.GetComponent<EnemyAttributes>();
+        //        targetAttributes.CombatIcon();
+
+        //    }
+
+        //    currentState = states.attack;
+
+        //    // seta o destino como o do target                                               
+        //    movePosition = _target.transform.position;
+
+        //    if (!heroAttributes.blocked)
+        //    {
+        //        //verifica se o target está fora do alcance
+        //        if (Vector3.Distance(movePosition, transform.position) >= heroAttributes.GetAttackDistance())
+        //        {
+
+        //            // se fora do alcance, caminha até o target
+        //            navigator.SetDestination(movePosition);
+        //            if (doingSpecial)
+        //            {
+        //                navigator.Stop();
+        //            }
+
+        //            anim.SetBool("walk", true);
+        //            anim.SetBool("attackNormal", false);
+        //            if (run)
+        //            {
+        //                anim.SetBool("run", true);
+        //                navigator.speed = heroAttributes.GetRunSpeed();
+                        
+        //            }
+        //            else
+        //            {
+        //                anim.SetBool("run", false);
+        //                navigator.speed = heroAttributes.GetSpeed();
+                        
+        //            }
+
+        //            //define a distancia de stop de parada dentro do alcance de ataque
+        //            navigator.stoppingDistance = heroAttributes.GetAttackDistance();
+        //        }
+        //        //se dentro do alcance, apenas olha em direção ao target
+        //        else transform.LookAt(_target.transform);
+        //    }
+        //}
+
+        
+        
+    }
+
+    // Método que finaliza o ataque especial
+    // e libera o player para demais comandos
+    public void FinishAttack(string attackType)
+    {
+        //anim.SetBool(attackType, false);
+        
+        //SetAnimationSpeed();
+        ////if (currentState == states.walk)
+        ////{
+        ////    anim.SetBool("walk", true);
+        ////    navigator.Resume();
+        ////}
+        //switch (currentState)
+        //{
+        //    case states.walk:
+        //        anim.SetBool("walk", false);
+        //        //navigator.Stop();
+        //        currentState = states.idle;
+                
+        //        break;
+        //    case states.attack: 
+        //        anim.SetBool("walk", true);
+        //        anim.SetBool("attackNormal", true);
+                
+        //        navigator.Resume();
+        //        break;
+        //    default: break;
+        //}
+        //if (target)
+        //{
+        //    if (targetAttributes.GetCurrentHealth() <= 0)
+        //    {
+        //        currentState = states.idle;
+        //        anim.SetBool("attackNormal", false);
+                
+        //        anim.SetBool("walk", false);
+        //        navigator.Stop();
+        //        target = null;
+                
+        //    }
+        //}
+        doingSpecial = false;
+        //Debug.Log("Saiu do Special");
+        //Debug.Log("doingSpecial False: FinishAttack");
+    }
+
+    public void DoDamage()
+    {
+        if (target)
+        {
+            if (Vector3.Distance(transform.position, target.transform.position) <= heroAttributes.GetAttackDistance())
+                targetAttributes.Damage(heroAttributes.GetDamage());
+            //if (targetAttributes.GetCurrentHealth() <= 0)
+            //{
+            //    currentState = states.idle;
+            //    anim.SetBool("attackNormal", false);
+
+            //    anim.SetBool("walk", false);
+
+            //    target = null;
+            //}
+        }
+    }
+
+    // Define a velocidade de animação para os movimentos básicos
+    // que são influenciados pelo atributo de movimento
+    void SetAnimationSpeed()
+    {
+        anim.speed = 1 + heroAttributes.GetMovement();  
+    }
+
+    // Define a velocidade de animação sem a influencia do atributo
+    // de movimento, a velocidade de animação fica a cargo do clip de animação
+    // Isto é usado para as animações dos especiais
+    public void ModifyAnimationSpeed()
+    {
+        anim.speed = 1.0f;
+    }
+
+    public void ConsumeRunEnergy()
+    {
+        if(heroAttributes.CurrentEnergy >= heroAttributes.GetRunEnergy())
+            heroAttributes.ConsumeEnergy(heroAttributes.GetRunEnergy());
+        else
+        {
+            anim.SetBool("run", false);
+            navigator.speed = heroAttributes.GetSpeed();
+        }
+    }
+
+    //sem serventia por hora
+    /*void OnTriggerEnter(Collider other)
+    {
+       // if (other.gameObject.layer == LayerMask.NameToLayer("enemy"))
+         //   Debug.Log("Colidiu inimigo");
+    }*/
+
+    void UpdateBars()
+    {
+        if (heroAttributes.GetCurrentHealth() < heroAttributes.GetMaxHealth())
+        {
+            float healthAmount = heroAttributes.GetHealthRate() * Time.deltaTime;
+            if (heroAttributes.GetCurrentHealth() + healthAmount >= heroAttributes.GetMaxHealth())
+            {
+                heroAttributes.SetCurrentHealth(heroAttributes.GetMaxHealth());
+            }
+            else heroAttributes.SetCurrentHealth(heroAttributes.GetCurrentHealth() + healthAmount);
+        }
+
+        if (heroAttributes.CurrentEnergy < heroAttributes.GetMaxEnergy())
+        {
+            float energyAmount = heroAttributes.GetEnergyRate() * Time.deltaTime;
+            if (heroAttributes.CurrentEnergy + energyAmount >= heroAttributes.GetMaxEnergy())
+            {
+                heroAttributes.SetCurrentEnergy(heroAttributes.GetMaxEnergy());
+            }
+            else heroAttributes.SetCurrentEnergy(heroAttributes.CurrentEnergy + energyAmount);
+        }
+
+
+        energyBar.fillAmount = heroAttributes.CurrentEnergy / heroAttributes.GetMaxEnergy();
+        healthBar.fillAmount = heroAttributes.GetCurrentHealth() / heroAttributes.GetMaxHealth();
+    }
+
+
+    public bool StartBlock()
+    {
+        //if (!doingSpecial)
+        //{
+        //    anim.SetBool("startBlock", true);
+        //    navigator.Stop();
+        //    heroAttributes.SetBlocked(true);
+        //    return true;
+        //}
+        //return false;
+        return false;
+    }
+
+    public void EnterBlock()
+    {
+        anim.SetBool("enterBlock", true);
+        anim.SetBool("startBlock", false);
+        
+    }
+
+    public void ExitBlock()
+    {
+        //anim.SetBool("exitBlock", true);
+        //anim.SetBool("enterBlock", false);
+
+    }
+
+    public void ContinueAfterBlock()
+    {
+        doingBlock = false;
+        //anim.SetBool("exitBlock", false);
+        //anim.SetBool("enterBlock", false);
+        //switch (currentState)
+        //{
+        //    case states.walk:
+        //        anim.SetBool("walk", false);
+        //        //navigator.Stop();
+        //        currentState = states.idle;
+                
+        //        break;
+        //    case states.attack:
+        //        anim.SetBool("walk", true);
+        //        anim.SetBool("attackNormal", true);
+                
+        //        navigator.Resume();
+        //        break;
+        //    default: break;
+        //}
+        //if (target)
+        //{
+        //    if (targetAttributes.GetCurrentHealth() <= 0)
+        //    {
+        //        currentState = states.idle;
+        //        anim.SetBool("attackNormal", false);
+
+        //        anim.SetBool("walk", false);
+                
+        //        navigator.Stop();
+        //        target = null;
+        //    }
+        //}
+
+        //heroAttributes.SetBlocked(false);
+    }
+
+    public void TakingDamage(GameObject other)
+    {
+        if (!target && currentState == states.idle)
+        {
+            //DoNormalAttack(other.GetComponent<Collider>(), false);
+            TouchEvents(false, true, Vector3.zero, false, other.GetComponent<Collider>(), false, 0);
+        }
+    }
+
+    /*public bool isBlocked()
+    {
+        return heroAttributes.blocked;
+    }*/
+
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+    //    Gizmos.DrawWireSphere(aoePosition.position, heroAttributes.aoeRadius);
+    //    Gizmos.DrawCube(aoePosition.position, new Vector3(0.1f, 0.1f, 1.0f));
+    //}
+}
