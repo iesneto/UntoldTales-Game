@@ -108,9 +108,9 @@ public class EnemyAttributes : MonoBehaviour {
 
         // canBeNerfed = true;
         //// outlineMesh.enabled = false;
-        
+
         //MeshRenderer[] rList = GetComponentsInChildren<MeshRenderer>();
-        
+
         //foreach (MeshRenderer rend  in rList)
         //{
         //    MeshOutline rOutline = rend.GetComponent<MeshOutline>();
@@ -118,9 +118,9 @@ public class EnemyAttributes : MonoBehaviour {
         //    {
         //        renderList.Add(rOutline);
         //    }
-            
-        //}
 
+        //}
+        
     }
 
     public void OnEnable()
@@ -137,13 +137,14 @@ public class EnemyAttributes : MonoBehaviour {
 
     public void AdjustDificulty()
     {
-        staggerStrength = GameControl.control.dificulty * baseStaggerStrength;
-        maxHealth = GameControl.control.dificulty * baseMaxHealth;
-        defense = GameControl.control.dificulty * baseDefense;
-        rewardPoints = GameControl.control.dificulty * baseRewardPoints;
-        damage = GameControl.control.dificulty * baseDamage;
-        minDamage = damage - (damage*baseDamageDelta);
-        maxDamage = damage + (damage*baseDamageDelta);
+        // ##Neto - jogo não vai mais ter dificuldade variavel por escolha do jogador
+        staggerStrength = /*GameControl.control.dificulty **/ baseStaggerStrength;
+        maxHealth = /*GameControl.control.dificulty **/ baseMaxHealth;
+        defense = /*GameControl.control.dificulty **/ baseDefense;
+        rewardPoints = /*GameControl.control.dificulty **/ baseRewardPoints;
+        damage = /*GameControl.control.dificulty **/ baseDamage;
+        minDamage = damage - (damage * baseDamageDelta);
+        maxDamage = damage + (damage * baseDamageDelta);
     }
 
     public void Initialize(bool loot)
